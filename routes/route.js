@@ -13,10 +13,9 @@ router.get("/doctors", (req, res) => {
   });
 });
 
-// Get specific doctors by location
-// query field name=location
+// Get specific doctors by location:- query name(loc)
 router.get("/doctors/location", (req, res) => {
-  const location = req.query.locaction;
+  const location = req.query.loc;
   Doctor.find(
     { clinic_address: { $regex: location, $options: "i" } },
     (err, foundDocs) => {
