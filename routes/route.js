@@ -12,3 +12,15 @@ router.get("/doctors", (req, res) => {
     else res.json(docs);
   });
 });
+
+// Get specific doctors by location
+router.get("/doctors/location", (req, res) => {
+  const location = req.query.loc;
+  Doctor.find(
+    { clinic_address: { $regex: location, $options: "i" } },
+    (err, foundDocs) => {
+      if (err) console.log(err);
+      res.json(foundDocs);
+    }
+  );
+});
