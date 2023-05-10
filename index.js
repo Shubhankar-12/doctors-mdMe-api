@@ -23,4 +23,6 @@ db.once("connected", () => {
 app.use(express.json());
 app.use("/api", routes);
 
-app.listen(3000, () => console.log("API listening on port 3000"));
+const port=process.env.PORT || 3000;
+
+app.listen(port, () => console.log("API listening on port 3000"));
